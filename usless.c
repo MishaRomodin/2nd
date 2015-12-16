@@ -15,7 +15,7 @@ int MaxStringSize = 100;
 int useless(char *str){
     int pause;
     char *argument=malloc(MaxStringSize);
-    char *command=malloc(MaxStringSize),*p;
+    char *command=malloc(MaxStringSize),*p;//строка начинается с p
     pid_t pid;	
     if((pid=fork())<0){
 	   printf("%s\n","Can't create child process.");
@@ -24,13 +24,13 @@ int useless(char *str){
     if (pid>0) return 0;
     pause=strtol(str,&p,10);
     sleep(pause);
-    strcpy(command,p+1);
-    int i = strlen(command)-1;
-    while(command[i] != '/'){
+    strcpy(command,p+1);//копируем строку command
+    int i = strlen(command)-1;//i присваиваем длину строки command-1
+    while(command[i] != '/'){//пока символ строки не равен слэшу, вычитам длину i и читаем предыдущий символ
         i--;
     }
     char mc[20];
-    strncpy(mc, command, i);
+    strncpy(mc, command, i)// тоже самое что strcpy только с защиткой
 
     if(execl(command, mc, NULL)<0){
         printf("Error - %d", errno);
