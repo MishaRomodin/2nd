@@ -56,8 +56,8 @@ int main()
     cur=str;
     size=1;
     while (size!=0){
-        size=read(file,&c,1);
-	if((c == NextLine)||(size==0))
+        size=read(file,&c,1);//читает один байт из файла в буфер с
+	if((c == NextLine)||(size==0))//если с-символ перевода строки и длина строки больше 0...
 	{ 	    
             *cur=0;
             if(strlen(str)>0)
@@ -65,8 +65,9 @@ int main()
 		      useless(str);
             }
             cur=str;
-	    }
-	    else{
+	}
+	    else
+	    {
 		  *cur=c;
 		  cur++;
 	    }
