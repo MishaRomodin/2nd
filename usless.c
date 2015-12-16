@@ -1,3 +1,4 @@
+//secondTask from МС Мишаня & company
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -28,10 +29,10 @@ int useless(char *str){
     while(command[i] != '/'){
         i--;
     }
-    char kek[20];
-    strncpy(kek, command, i);
+    char mc[20];
+    strncpy(mc, command, i);
 
-    if(execl(command, kek, NULL)<0){
+    if(execl(command, mc, NULL)<0){
         printf("Error - %d", errno);
         printf("%s%s%s\n","Program ",command," failed to load.");
         exit(0);
